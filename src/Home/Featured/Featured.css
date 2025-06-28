@@ -1,0 +1,7 @@
+.featured_bg{
+    background-image: url("../../assets/home/banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    border-radius: 20px;
+}

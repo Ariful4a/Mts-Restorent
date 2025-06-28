@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
 import MainLayout from "./MainLayout/MainLayout";
 import Home from "./Home/Home";
+import MenuPage from "./Pages/MenuPage/MenuPage";
+import OrderPage from "./Pages/OrderPage/OrderPage";
 
 const root = document.getElementById("root");
 
@@ -11,7 +13,8 @@ ReactDOM.createRoot(root).render(
     <Routes>
       <Route path="/" element={<MainLayout></MainLayout>}>
         <Route index element={<Home/>} />
-        {/* <Route path="settings" element={<Settings />} /> */}
+        <Route path="menuPage" element={<MenuPage></MenuPage>} />
+        <Route path="orderPage" element={<OrderPage></OrderPage>} />
       </Route>
     </Routes>
   </BrowserRouter>

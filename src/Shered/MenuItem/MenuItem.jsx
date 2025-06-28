@@ -7,7 +7,7 @@ const MenuItem = ({item}) => {
             <div>
                 <img
                     src={image}
-                    class="img-fluid w-[104px] rounded-top"
+                    class="img-fluid w-[104px] h-full rounded-top rounded-[0px_200px_200px_200px]"
                     alt=""
                 />
             </div>

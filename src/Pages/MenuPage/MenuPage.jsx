@@ -24,10 +24,10 @@ const MenuPage = () => {
             {/* Offered menu  */}
             <MenuCetegory items={offered}></MenuCetegory>
 
-            <MenuCetegory items={desserts} img={dessertImg} title={"Desserts"}></MenuCetegory>
-            <MenuCetegory items={pizzas} img={pizzaImg} title={"Pizzas"}></MenuCetegory>
-            <MenuCetegory items={salads} img={saladImg} title={"Salads"}></MenuCetegory>
-            <MenuCetegory items={soups} img={soupImg} title={"Soups"}></MenuCetegory>
+            <MenuCetegory items={desserts} img={dessertImg} title={"desserts"}></MenuCetegory>
+            <MenuCetegory items={pizzas} img={pizzaImg} title={"pizzas"}></MenuCetegory>
+            <MenuCetegory items={salads} img={saladImg} title={"salads"}></MenuCetegory>
+            <MenuCetegory items={soups} img={soupImg} title={"soups"}></MenuCetegory>
 
         </div>
     );

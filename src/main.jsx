@@ -14,7 +14,7 @@ ReactDOM.createRoot(root).render(
       <Route path="/" element={<MainLayout></MainLayout>}>
         <Route index element={<Home/>} />
         <Route path="menuPage" element={<MenuPage></MenuPage>} />
-        <Route path="orderPage" element={<OrderPage></OrderPage>} />
+        <Route path="orderPage/:category" element={<OrderPage></OrderPage>} />
       </Route>
     </Routes>
   </BrowserRouter>

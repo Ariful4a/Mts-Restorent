@@ -1,14 +1,17 @@
 
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import Header from '../Shered/Header/Header';
 import Footer from '../Shered/Footer/Footer';
 
 const MainLayout = () => {
+    const location = useLocation()
+    console.log(location);
+    const noHeaderAndNOFooter = location.pathname.includes('login');
     return (
         <div>
-            <Header></Header>
+            {noHeaderAndNOFooter || <Header></Header>}
             <Outlet></Outlet>
-            <Footer></Footer>
+        {noHeaderAndNOFooter || <Footer></Footer>}
         </div>
     );
 };

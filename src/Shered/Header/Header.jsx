@@ -1,4 +1,6 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+
+
 
 
 const Header = () => {
@@ -32,10 +34,10 @@ const Header = () => {
                <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link to={"menuPage"}>Menu</Link>
+                <Link to={"/menuPage"}>Menu</Link>
               </li>
               <li>
-                   <Link to={"orderPage"}>Order page</Link>
+                   <Link to={`/orderPage/salad`}>Order page</Link>
               </li>
             </ul>
           </div>
@@ -47,15 +49,15 @@ const Header = () => {
                <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link to={"menuPage"}>Menu</Link>
+                <Link to={"/menuPage"}>Menu</Link>
               </li>
             <li>
-              <Link to={"orderPage"}>Order page</Link>
+              <Link to={"/orderPage/salad"}>Order page</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        <Link to={'login'}>Login</Link>
         </div>
       </div>
     </header>

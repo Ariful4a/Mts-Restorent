@@ -1,25 +1,23 @@
+const FoodCard = ({ item }) => {
+  const { name, recipe, image, price } = item;
 
-
-const FoodCard = ({item}) => {
-    const {name, recipe, image, price} = item;
   return (
-    <div>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-          <img
-            src={image}
-            alt="Shoes"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{name}</h2>
-          <p className="absolute right-5 top-5 bg-black text-white p-2">${price}</p>
-          <p>
-           {recipe}
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Add to Cart</button>
-          </div>
+    <div className="bg-white rounded-xl shadow-md overflow-hidden transition hover:shadow-lg">
+      <img
+        src={image}
+        alt={name}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-4">
+        <div className="flex justify-between items-start">
+          <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
+          <span className="text-sm bg-gray-900 text-white px-3 py-1 rounded-full">${price}</span>
+        </div>
+        <p className="text-sm text-gray-600 mt-2">
+          {recipe.length > 80 ? recipe.slice(0, 80) + "..." : recipe}
+        </p>
+        <div className="mt-4 text-right">
+          <button className="btn btn-sm btn-primary">Add to Cart</button>
         </div>
       </div>
     </div>

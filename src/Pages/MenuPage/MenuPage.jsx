@@ -20,7 +20,8 @@ const MenuPage = () => {
     return (
         <div>
             <Cover img={menuImg} title={"Our Menu"}></Cover>
-            <SectionTile subHading={"Don't miss"} Hading={"TODAY'S OFFER"}></SectionTile>
+          <div className='max-w-6xl mx-auto'>
+              <SectionTile subHading={"Don't miss"} Hading={"TODAY'S OFFER"}></SectionTile>
             {/* Offered menu  */}
             <MenuCetegory items={offered}></MenuCetegory>
 
@@ -28,6 +29,7 @@ const MenuPage = () => {
             <MenuCetegory items={pizzas} img={pizzaImg} title={"pizzas"}></MenuCetegory>
             <MenuCetegory items={salads} img={saladImg} title={"salads"}></MenuCetegory>
             <MenuCetegory items={soups} img={soupImg} title={"soups"}></MenuCetegory>
+          </div>
 
         </div>
     );

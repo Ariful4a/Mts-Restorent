@@ -6,7 +6,7 @@ import Footer from '../Shered/Footer/Footer';
 const MainLayout = () => {
     const location = useLocation()
     console.log(location);
-    const noHeaderAndNOFooter = location.pathname.includes('login');
+    const noHeaderAndNOFooter = location.pathname.includes('login') || location.pathname.includes('register');
     return (
         <div>
             {noHeaderAndNOFooter || <Header></Header>}

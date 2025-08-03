@@ -6,19 +6,23 @@ import Home from "./Home/Home";
 import MenuPage from "./Pages/MenuPage/MenuPage";
 import OrderPage from "./Pages/OrderPage/OrderPage";
 import Login from "./Pages/Authentication/Login/login";
+import AuthProviders from "./Components/Providers/AuthProviders";
+import Register from "./Pages/Authentication/Register/Register";
 
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
-
-    <Routes>
+    <AuthProviders>
+       <Routes>
       <Route path="/" element={<MainLayout></MainLayout>}>
         <Route index element={<Home/>} />
         <Route path="menuPage" element={<MenuPage></MenuPage>} />
         <Route path="orderPage/:category" element={<OrderPage></OrderPage>} />
         <Route path="/login" element={<Login></Login>} />
+        <Route path="/register" element={<Register></Register>} />
       </Route>
     </Routes>
+    </AuthProviders>
   </BrowserRouter>
 );

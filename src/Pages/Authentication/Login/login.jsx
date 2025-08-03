@@ -6,6 +6,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { Link } from "react-router";
 
 const Login = () => {
 const captchaRef = useRef(null);
@@ -40,7 +41,7 @@ const [disabled, setDisabled] = useState(true);
       style={{ backgroundImage: `url(${img2})` }}
     >
       <div
-        className="bg-white shadow-lg rounded-lg flex w-[900px] max-w-full overflow-hidden"
+        className="bg-white shadow-2xl shadow-black rounded-lg flex w-[900px] max-w-full overflow-hidden"
         style={{ backgroundImage: `url(${img2})` }}
       >
         {/* Left Side Illustration */}
@@ -105,8 +106,8 @@ const [disabled, setDisabled] = useState(true);
           <div className="text-center mt-4">
             <p className="text-sm">
               New here?{" "}
-              <span className="text-orange-500 font-semibold cursor-pointer">
-                Create a New Account
+              <span className="text-blue-500 font-semibold cursor-pointer">
+               <Link to={'/register'}>Create a New Account</Link>
               </span>
             </p>
 

@@ -3,6 +3,7 @@ import img from "../../../assets/login/Rectangle 75.png"; // Replace with your o
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../Components/Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -11,15 +12,19 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email, data.password)
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    })
+    createUser(data.email, data.password).then((result) => {
+      const registerUser = result.user;
+      console.log(registerUser);
+      Swal.fire({
+        title: "Register successfully",
+        icon: "success",
+        draggable: true,
+      });
+    });
   };
 
   return (

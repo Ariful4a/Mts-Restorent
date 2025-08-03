@@ -20,7 +20,7 @@ const AuthProviders = ({children}) => {
     // Create new account 
     const userLogin = (email, password) =>{
         setLoading(true);
-        return signInWithEmailAndPassword(email, password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
     // Logout user 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import img1 from "../../../assets/login/authentication2 1.png";
 import img2 from "../../../assets/login/Rectangle 75.png";
 import {
@@ -7,10 +7,13 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { Link } from "react-router";
+import { AuthContext } from "../../../Components/Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Login = () => {
-const captchaRef = useRef(null);
-const [disabled, setDisabled] = useState(true);
+  const captchaRef = useRef(null);
+  const [disabled, setDisabled] = useState(true);
+  const { userLogin } = useContext(AuthContext);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -21,19 +24,25 @@ const [disabled, setDisabled] = useState(true);
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    userLogin(email, password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      Swal.fire({
+        title: "Login successfully",
+        icon: "success",
+        draggable: true,
+      });
+    });
   };
 
-
-  const handleValidate = () =>{
+  const handleValidate = () => {
     const user_captcha_value = captchaRef.current.value;
-    if(validateCaptcha(user_captcha_value)){
-        setDisabled(false);
+    if (validateCaptcha(user_captcha_value)) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
     }
-    else{
-        setDisabled(true);
-    }
-  }
+  };
 
   return (
     <div
@@ -92,11 +101,16 @@ const [disabled, setDisabled] = useState(true);
                 placeholder="Type Captcha"
                 className="w-full border border-gray-300 bg-white text-black rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
               />
-              <button onClick={handleValidate} className="btn btn-outline btn-xs w-full mt-4 bg-green-500">Validate</button>
+              <button
+                onClick={handleValidate}
+                className="btn btn-outline btn-xs w-full mt-4 bg-green-500"
+              >
+                Validate
+              </button>
             </div>
 
             <input
-            disabled={disabled}
+              disabled={disabled}
               className="btn bg-orange-600 w-30"
               type="submit"
               value={"Login"}
@@ -107,7 +121,7 @@ const [disabled, setDisabled] = useState(true);
             <p className="text-sm">
               New here?{" "}
               <span className="text-blue-500 font-semibold cursor-pointer">
-               <Link to={'/register'}>Create a New Account</Link>
+                <Link to={"/register"}>Create a New Account</Link>
               </span>
             </p>
 

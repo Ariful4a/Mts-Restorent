@@ -6,7 +6,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../Components/Providers/AuthProviders";
 import Swal from "sweetalert2";
 
@@ -14,6 +14,11 @@ const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const { userLogin } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const location = useLocation();
+
+
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -32,6 +37,7 @@ const Login = () => {
         icon: "success",
         draggable: true,
       });
+      navigate(from, { replace: true });
     });
   };
 
@@ -95,18 +101,13 @@ const Login = () => {
 
             <div>
               <input
+              onBlur={handleValidate}
                 type="text"
                 name="captcha"
                 ref={captchaRef}
                 placeholder="Type Captcha"
                 className="w-full border border-gray-300 bg-white text-black rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
               />
-              <button
-                onClick={handleValidate}
-                className="btn btn-outline btn-xs w-full mt-4 bg-green-500"
-              >
-                Validate
-              </button>
             </div>
 
             <input

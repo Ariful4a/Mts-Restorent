@@ -8,7 +8,7 @@ import OrderPage from "./Pages/OrderPage/OrderPage";
 import Login from "./Pages/Authentication/Login/login";
 import AuthProviders from "./Components/Providers/AuthProviders";
 import Register from "./Pages/Authentication/Register/Register";
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+// import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 const root = document.getElementById("root");
 
@@ -19,7 +19,7 @@ ReactDOM.createRoot(root).render(
       <Route path="/" element={<MainLayout></MainLayout>}>
         <Route index element={<Home/>} />
         <Route path="menuPage" element={<MenuPage></MenuPage>} />
-        <Route path="orderPage/:category" element={<PrivateRoute><OrderPage></OrderPage></PrivateRoute>} />
+        <Route path="orderPage/:category" element={<OrderPage></OrderPage>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
       </Route>

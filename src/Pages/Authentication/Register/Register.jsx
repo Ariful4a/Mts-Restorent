@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import img from "../../../assets/login/Rectangle 75.png"; // Replace with your own image
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -12,17 +12,25 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile, logOut} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const registerUser = result.user;
       console.log(registerUser);
-      Swal.fire({
-        title: "Register successfully",
-        icon: "success",
-        draggable: true,
+      updateUserProfile(data.name, data.photoURL)
+      .then(() => {
+        Swal.fire({
+          title: "Register successfully",
+          icon: "success",
+          draggable: true,
+        });
+        logOut()
+        .then(() =>{
+          navigate('/login')
+        })
       });
     });
   };
@@ -55,6 +63,19 @@ const Register = () => {
                   required
                 />
                 {errors.name && <span>Name is required</span>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1 text-black">
+                  Photo URL
+                </label>
+                <input
+                  {...register("photoURL", { required: true })}
+                  type="text"
+                  placeholder="Photo URL"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  required
+                />
+                {errors.photoURL && <span>Photo URL is required</span>}
               </div>
 
               <div>

@@ -10,6 +10,8 @@ import AuthProviders from "./Components/Providers/AuthProviders";
 import Register from "./Pages/Authentication/Register/Register";
 // import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Cart from "./Pages/Dashboard/Cart/Cart";
+import Dashboard from "./MainLayout/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,10 @@ ReactDOM.createRoot(root).render(
             />
             <Route path="/login" element={<Login></Login>} />
             <Route path="/register" element={<Register></Register>} />
+          </Route>
+          {/* Dashboard  */}
+          <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+            <Route path="cart" element={<Cart/>} />
           </Route>
         </Routes>
       </QueryClientProvider>

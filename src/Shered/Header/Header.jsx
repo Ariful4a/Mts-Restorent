@@ -56,7 +56,7 @@ const Header = () => {
           {/* Right Section */}
           <div className="navbar-end flex items-center gap-4">
             {/* Add to Cart Icon */}
-            <Link to="/" className="relative">
+            <Link to="/dashboard/cart" className="relative">
               <ShoppingCartIcon className="w-7 h-7 text-white hover:text-red-400 transition" />
               {cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -124,7 +124,7 @@ const Header = () => {
               >
                 {navLinks}
                 <li>
-                  <Link to="/" className="flex items-center gap-2">
+                  <Link to="/dashboard/cart" className="flex items-center gap-2">
                     <ShoppingCartIcon className="w-5 h-5" /> Cart{cart.length}
                   </Link>
                 </li>

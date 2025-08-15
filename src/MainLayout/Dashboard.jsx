@@ -3,8 +3,10 @@ import { FaCalendarAlt, FaEnvelope, FaHome, FaShoppingBag, FaShoppingCart } from
 import { MdPayment, MdReviews } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useCart from "../Pages/AddToCart/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
     return (
         <div className="flex container mx-auto">
             {/* dashboard side bar  */}
@@ -20,7 +22,7 @@ const Dashboard = () => {
                         <NavLink to={'/dashboard/cart'}><MdPayment />Payment History</NavLink>
                     </li>
                     <li className="bg-[#32327d] text-white rounded w-full">
-                        <NavLink to={'/dashboard/cart'}><FaShoppingCart /> My cart</NavLink>
+                        <NavLink to={'/dashboard/cart'}><FaShoppingCart /> My cart <span>({cart.length})</span></NavLink>
                     </li>
                     <li className="bg-[#32327d] text-white rounded w-full">
                         <NavLink to={'/dashboard/cart'}><MdReviews />Add Review</NavLink>
@@ -28,6 +30,7 @@ const Dashboard = () => {
                     <li className="bg-[#32327d] text-white rounded w-full">
                         <NavLink to={'/dashboard/cart'}><TbBrandBooking />My Booking</NavLink>
                     </li>
+                    <div className="divider"></div>
                     <li className="bg-[#32327d] text-white rounded w-full">
                         <NavLink to={'/'}><FaHome />Home</NavLink>
                     </li>

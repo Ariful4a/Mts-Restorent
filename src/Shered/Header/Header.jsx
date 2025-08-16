@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline"; // Heroicons
 import useCart from "../../Pages/AddToCart/useCart";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,6 +13,11 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await logOut();
+      Swal.fire({
+        title: "Logout successfully!",
+        icon: "success",
+        draggable: true,
+      });
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -124,7 +130,10 @@ const Header = () => {
               >
                 {navLinks}
                 <li>
-                  <Link to="/dashboard/cart" className="flex items-center gap-2">
+                  <Link
+                    to="/dashboard/cart"
+                    className="flex items-center gap-2"
+                  >
                     <ShoppingCartIcon className="w-5 h-5" /> Cart{cart.length}
                   </Link>
                 </li>

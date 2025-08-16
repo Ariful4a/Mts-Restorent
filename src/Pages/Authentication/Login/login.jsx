@@ -9,6 +9,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../Components/Providers/AuthProviders";
 import Swal from "sweetalert2";
+import SocialLogin from "../../../Components/SocialLogin";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -129,15 +130,7 @@ const Login = () => {
             <p className="text-sm mt-4">Or sign in with</p>
 
             <div className="flex justify-center gap-4 mt-2">
-              <button className="border rounded-full p-2">
-                <i className="fab fa-facebook-f"></i>
-              </button>
-              <button className="border rounded-full p-2">
-                <i className="fab fa-google"></i>
-              </button>
-              <button className="border rounded-full p-2">
-                <i className="fab fa-github"></i>
-              </button>
+                <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>

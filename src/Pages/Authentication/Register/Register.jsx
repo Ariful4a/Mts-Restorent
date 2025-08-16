@@ -4,33 +4,45 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../Components/Providers/AuthProviders";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import SocialLogin from "../../../Components/SocialLogin";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const { createUser, updateUserProfile, logOut} = useContext(AuthContext);
+  const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const registerUser = result.user;
       console.log(registerUser);
-      updateUserProfile(data.name, data.photoURL)
-      .then(() => {
-        Swal.fire({
-          title: "Register successfully",
-          icon: "success",
-          draggable: true,
+      updateUserProfile(data.name, data.photoURL).then(() => {
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+        };
+
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            reset()
+            Swal.fire({
+              title: "Register successfully",
+              icon: "success",
+              draggable: true,
+            });
+            logOut().then(() => {
+              navigate("/login");
+            });
+          }
         });
-        logOut()
-        .then(() =>{
-          navigate('/login')
-        })
       });
     });
   };
@@ -147,15 +159,7 @@ const Register = () => {
             </div>
 
             <div className="flex justify-center gap-4 mt-3">
-              <button className="border rounded-full p-2 hover:bg-gray-100">
-                <i className="fab fa-google"></i>
-              </button>
-              <button className="border rounded-full p-2 hover:bg-gray-100">
-                <i className="fab fa-github"></i>
-              </button>
-              <button className="border rounded-full p-2 hover:bg-gray-100">
-                <i className="fab fa-facebook-f"></i>
-              </button>
+                <SocialLogin></SocialLogin>
             </div>
           </div>
 

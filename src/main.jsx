@@ -13,6 +13,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Cart from "./Pages/Dashboard/Cart/Cart";
 import Dashboard from "./MainLayout/Dashboard";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import AllUsers from "./Pages/Dashboard/Allusers/AllUsers";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,8 @@ ReactDOM.createRoot(root).render(
           {/* Dashboard  */}
           <Route path="/dashboard" element={<PrivateRoute><Dashboard></Dashboard></PrivateRoute>}>
             <Route path="cart" element={<Cart/>} />
+            {/* Admin routes  */}
+            <Route path="allUsers" element={<AllUsers></AllUsers>} />
           </Route>
         </Routes>
       </QueryClientProvider>

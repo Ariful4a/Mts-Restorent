@@ -20,7 +20,6 @@ const Dashboard = () => {
   const isAdmin = true;
   return (
     <div className="flex container mx-auto">
-      {isAdmin ? <></> : <></>}
       {/* dashboard side bar  */}
       <div className="w-64 min-h-screen bg-success rounded-2xl">
         <ul className="menu p-4 w-full space-y-4">
@@ -51,7 +50,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="bg-[#32327d] text-white rounded w-full">
-                <NavLink to={"/dashboard/cart"}>
+                <NavLink to={"/dashboard/allUsers"}>
                   <FaUsersGear />
                   All users
                 </NavLink>

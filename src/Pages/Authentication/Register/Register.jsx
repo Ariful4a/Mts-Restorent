@@ -24,13 +24,16 @@ const Register = () => {
     createUser(data.email, data.password).then((result) => {
       const registerUser = result.user;
       console.log(registerUser);
-      updateUserProfile(data.name, data.photoURL).then(() => {
+      updateUserProfile(data.name, data.photoURL)
+      .then(() => {
         const userInfo = {
           name: data.name,
           email: data.email,
+          photo: data.photoURL
         };
 
-        axiosPublic.post("/users", userInfo).then((res) => {
+        axiosPublic.post("/users", userInfo)
+        .then((res) => {
           if (res.data.insertedId) {
             reset()
             Swal.fire({
@@ -38,7 +41,8 @@ const Register = () => {
               icon: "success",
               draggable: true,
             });
-            logOut().then(() => {
+            logOut()
+            .then(() => {
               navigate("/login");
             });
           }

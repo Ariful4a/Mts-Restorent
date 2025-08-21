@@ -6,6 +6,7 @@ import { AuthContext } from "../../../Components/Providers/AuthProviders";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SocialLogin from "../../../Components/SocialLogin";
+import { welcomeUser } from "../../WelcomeUser";
 
 const Register = () => {
   const {
@@ -35,7 +36,8 @@ const Register = () => {
         axiosPublic.post("/users", userInfo)
         .then((res) => {
           if (res.data.insertedId) {
-            reset()
+            welcomeUser(data.name);
+            reset();
             Swal.fire({
               title: "Register successfully",
               icon: "success",

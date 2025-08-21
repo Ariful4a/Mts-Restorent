@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
     // Intercepts 401 and 403 status 
     axiosSecure.interceptors.response.use(function(response){
         return response;
-    }, async function(error){
+    }, async (error)=>{
         const status = error.response.status;
         console.log("Error status:", status);
         if (status === 401 || status === 403) {
@@ -40,4 +40,4 @@ const useAxiosSecure = () => {
     return axiosSecure;
 }
 
-export default useAxiosSecure
+export default useAxiosSecure;

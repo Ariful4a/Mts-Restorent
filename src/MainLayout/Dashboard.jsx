@@ -13,11 +13,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import useCart from "../Pages/AddToCart/useCart";
 import { TiThListOutline } from "react-icons/ti";
 import { FaUsersGear } from "react-icons/fa6";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
   const [cart] = useCart();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+
+
+
   return (
     <div className="flex container mx-auto">
       {/* dashboard side bar  */}

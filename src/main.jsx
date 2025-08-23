@@ -14,6 +14,8 @@ import Cart from "./Pages/Dashboard/Cart/Cart";
 import Dashboard from "./MainLayout/Dashboard";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import AllUsers from "./Pages/Dashboard/Allusers/AllUsers";
+import AdminRoute from "./Components/PrivateRoute/adminRoutes";
+import AddItems from "./Pages/Dashboard/AddItems/AddItems";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +40,8 @@ ReactDOM.createRoot(root).render(
           <Route path="/dashboard" element={<PrivateRoute><Dashboard></Dashboard></PrivateRoute>}>
             <Route path="cart" element={<Cart/>} />
             {/* Admin routes  */}
-            <Route path="allUsers" element={<AllUsers></AllUsers>} />
+            <Route path="allUsers" element={<AdminRoute><AllUsers></AllUsers></AdminRoute>} />
+            <Route path="addItems" element={<AdminRoute><AddItems></AddItems  ></AdminRoute>} />
           </Route>
         </Routes>
       </QueryClientProvider>

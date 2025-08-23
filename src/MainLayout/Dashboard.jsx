@@ -36,7 +36,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="bg-[#32327d] text-white rounded w-full">
-                <NavLink to={"/dashboard/cart"}>
+                <NavLink to={"/dashboard/addItems"}>
                   <FaUtensils />
                   Add Items
                 </NavLink>

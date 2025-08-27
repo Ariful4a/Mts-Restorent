@@ -16,6 +16,7 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import AllUsers from "./Pages/Dashboard/Allusers/AllUsers";
 import AdminRoute from "./Components/PrivateRoute/adminRoutes";
 import AddItems from "./Pages/Dashboard/AddItems/AddItems";
+import ManageItems from "./Pages/Dashboard/ManageItems/ManageItems";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ ReactDOM.createRoot(root).render(
             {/* Admin routes  */}
             <Route path="allUsers" element={<AdminRoute><AllUsers></AllUsers></AdminRoute>} />
             <Route path="addItems" element={<AdminRoute><AddItems></AddItems  ></AdminRoute>} />
+            <Route path="manageItems" element={<AdminRoute><ManageItems></ManageItems></AdminRoute>} />
           </Route>
         </Routes>
       </QueryClientProvider>

@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
 import SectionTile from '../../../Components/SectionTitle/SectionTile'
 import { FaUtensils } from 'react-icons/fa';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
